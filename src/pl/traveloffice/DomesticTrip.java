@@ -6,9 +6,8 @@ public class DomesticTrip extends Trip {
 
     private BigDecimal ownArrivalDiscount;
 
-    public DomesticTrip(Date start, Date end, String destination, BigDecimal price, BigDecimal ownArrivalDiscount) {
-        super(start, end, destination, price);
-        this.ownArrivalDiscount = ownArrivalDiscount;
+    public DomesticTrip(Date start, Date end, String destination) {
+        super(start, end, destination);
     }
 
     public void setOwnArrivalDiscount(BigDecimal ownArrivalDiscount) {

@@ -6,9 +6,8 @@ public class AbroadTrip extends Trip {
 
     private BigDecimal insurance;
 
-    public AbroadTrip(Date start, Date end, String destination, BigDecimal price, BigDecimal insurance) {
-        super(start, end, destination, price);
-        this.insurance = insurance;
+    public AbroadTrip(Date start, Date end, String destination) {
+        super(start, end, destination);
     }
 
     public void setInsurance(BigDecimal insurance) {
