@@ -1,39 +1,42 @@
 package pl.traveloffice;
 
-import java.util.regex.Pattern;
-
 public class Date {
 
-    private int year;
-    private int month;
-    private int day;
+    private String date;
 
-    public Date(int year, int month, int day){
-        this.year = year;
-        this.month = month;
-        this.day = day;
+    public Date(String date) {
+        this.date = date;
     }
 
-    public static void setDate(int year, int month, int day){
-        String dateFromClass = year + String.valueOf(month) + day;
-        Pattern p = Pattern.compile(" ");
-        java.util.Date date = new java.util.Date();
-
-    }
-
-    @Override
-    public String toString(){
-        return year + "/" + month + "/" + day;
+    public static String setDate(String date, String separator){
+        String[] splitted = date.split(separator);
+        return new java.util.Date(Integer.valueOf(splitted[0]), Integer.valueOf(splitted[1]), Integer.valueOf(splitted[2])).toString();
     }
 }
 
-
+//    private int year;
+//    private int month;
+//    private int day;
 //
-//    CELE I ZADANIA:
-//        • Napisz w klasie Date metodę umożliwiającą utworzenie obiektu daty na podstawie jego postaci
-//        tekstowej
-//        • Dopuść różne postaci separatorów
-//        ALGORYTM WYKONANIA:
-//        • Utwórz w klasie Date metodę statyczną, która na podstawie podanego tekstu oraz separatora utworzy obiekt daty
-//        • Wykorzystaj dowolny z przedstawionych na prezentacji mechanizmów podziału tekstu na tokeny
-//        • Sprawdź działanie utworzonej metody
+//    public Date(int year, int month, int day){
+//        this.year = year;
+//        this.month = month;
+//        this.day = day;
+//    }
+
+//    @Override
+//    public String toString(){
+//      return year + "/" + month + "/" + day;
+//    }
+
+// STRING TO DATE METHOD
+//    public static java.util.Date setDate(String date){
+//        String splitted = date.replaceAll("\\D", "/");
+//        java.util.Date dateO = new java.util.Date();
+//        try {
+//            dateO = new SimpleDateFormat("dd/MM/yyyy").parse(splitted);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return dateO;
+//    }

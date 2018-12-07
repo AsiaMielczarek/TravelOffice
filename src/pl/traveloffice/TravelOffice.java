@@ -4,7 +4,6 @@ import java.util.*;
 
 public class TravelOffice {
 
-    // PO ZREFAKTOROWANIU
     private Set<Customer> customers = new HashSet<>();
     private Map<String, Trip> tripMap = new HashMap<>();
 
@@ -31,8 +30,11 @@ public class TravelOffice {
     public Customer findCustomerByName(String customerName) {
         Customer c = null;
         Iterator<Customer> iterator = customers.iterator();
-        if (iterator.next().getName().equals(customerName)) {
+        while(iterator.hasNext()){
             c = iterator.next();
+            if (c.getName().equals(customerName)) {
+                return c;
+            }
         }
         return c;
     }
@@ -54,10 +56,11 @@ public class TravelOffice {
     }
 
     public String findAllCustomers() {
+        Customer c = null;
         StringBuilder sb = new StringBuilder();
         Iterator<Customer> iterator = customers.iterator();
         while (iterator.hasNext()) {
-            Customer c = iterator.next();
+            c = iterator.next();
             sb.append(c.getName()).append("\n");
         }
         return sb.toString();

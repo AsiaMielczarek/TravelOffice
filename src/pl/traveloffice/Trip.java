@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 public abstract class Trip {
 
-    private Date start;
-    private Date end;
+    private String start;
+    private String end;
     private String destination;
     private BigDecimal price;
 
-    public Trip(Date start, Date end, String destination) {
+    public Trip(String start, String end, String destination) {
         this.start = start;
         this.end = end;
         this.destination = destination;
@@ -21,7 +21,7 @@ public abstract class Trip {
 
     @Override
     public String toString(){
-        return "from: " + start.toString() + " to: " + end.toString() + ", destination: " + destination + ", price: " + getPrice();
+        return "from: " + start + " to: " + end + ", destination: " + destination + ", price: " + getPrice();
     }
 }
 
