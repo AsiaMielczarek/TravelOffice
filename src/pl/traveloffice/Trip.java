@@ -2,18 +2,17 @@ package pl.traveloffice;
 
 import java.math.BigDecimal;
 
-public class Trip {
+public abstract class Trip {
 
-    private Date start;
-    private Date end;
+    private String start;
+    private String end;
     private String destination;
     private BigDecimal price;
 
-    public Trip(Date start, Date end, String destination, BigDecimal price) {
+    public Trip(String start, String end, String destination) {
         this.start = start;
         this.end = end;
         this.destination = destination;
-        this.price = price;
     }
 
     public BigDecimal getPrice() { return price; }
@@ -22,7 +21,7 @@ public class Trip {
 
     @Override
     public String toString(){
-        return "from: " + start.toString() + " to: " + end.toString() + ", destination: " + destination + ", price: " + getPrice();
+        return "from: " + start + " to: " + end + ", destination: " + destination + ", price: " + getPrice();
     }
 }
 

@@ -4,7 +4,6 @@ import java.util.*;
 
 public class TravelOffice {
 
-    // PO ZREFAKTOROWANIU
     private Set<Customer> customers = new HashSet<>();
     private Map<String, Trip> tripMap = new HashMap<>();
 
@@ -16,48 +15,68 @@ public class TravelOffice {
         return customers.size();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        Iterator<Customer> iterator = customers.iterator();
-        while(iterator.hasNext()){
-            Customer c = iterator.next();
-            if(c != null){
-                sb.append(c.toString()).append("\n");
-            }
-        }
-        return sb.toString();
+    public void addTrip(String tripName, Trip trip) {
+        tripMap.put(tripName, trip);
     }
 
-    public void addTrip(String name, Trip trip){
-        tripMap.put(name, trip);
-    }
-
-    public boolean removeTrip(String name){
-        if(tripMap.containsKey(name)){
-            tripMap.remove(name);
+    public boolean removeTrip(String tripName) {
+        if (tripMap.containsKey(tripName)) {
+            tripMap.remove(tripName);
             return true;
         }
         return false;
     }
 
-    public Customer findCustomerByName(String name){
+    public Customer findCustomerByName(String customerName) {
         Customer c = null;
         Iterator<Customer> iterator = customers.iterator();
+        while(iterator.hasNext()){
+            c = iterator.next();
+            if (c.getName().equals(customerName)) {
+                return c;
+            }
+        }
         return c;
     }
+
+    public boolean removeCustomer(Customer customer) {
+        if (customers.contains(customer)) {
+            customers.remove(customer);
+            return true;
+        }
+        return false;
+    }
+
+    public String findAllTrips(){
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry<String, Trip> mapEntry: tripMap.entrySet()){
+            sb.append(mapEntry.getKey()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String findAllCustomers() {
+        Customer c = null;
+        StringBuilder sb = new StringBuilder();
+        Iterator<Customer> iterator = customers.iterator();
+        while (iterator.hasNext()) {
+            c = iterator.next();
+            sb.append(c.getName()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Iterator<Customer> iterator = customers.iterator();
+        while (iterator.hasNext()) {
+            Customer c = iterator.next();
+            sb.append(c.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }
-
-
-//
-// Dodaj do klasy TravelOffice metody do:
-//         – dodawania wycieczki – void addTrip(String, Trip)
-//         – usuwania wycieczki – boolean removeTrip(String)
-//         – wyszukiwania klienta – Customer findCustomerByName(String)
-//         – do usuwania klienta – boolean removeCustomer(Customer)
-//         • Dodaj do klasy metody zwracające wszystkie wycieczki i wszystkich klientów
-//         • Zablokuj możliwość tworzenia obiektów typu Trip – nie ma to sensu, od czasu, gdy nastąpiła
-//         specjalizacja na wycieczki krajowe i zagraniczne
 
 
 //    TABLICA DYNAMICZNA
