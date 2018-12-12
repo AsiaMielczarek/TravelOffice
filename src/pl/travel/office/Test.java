@@ -1,11 +1,7 @@
 package pl.travel.office;
 
 import pl.travel.office.classes.*;
-
-import java.math.BigDecimal;
 import java.util.Scanner;
-
-import static pl.travel.office.classes.Date.setDate;
 
 public class Test {
 
