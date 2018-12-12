@@ -16,6 +16,7 @@ public class MainHandler implements UserInterface {
     public MainHandler(TravelOffice travelOffice) {
         this.travelOffice = travelOffice;
         sc = new Scanner(System.in);
+        sc.useDelimiter("\r\n");
     }
 
     @Override
@@ -143,8 +144,4 @@ public class MainHandler implements UserInterface {
         System.out.println(travelOffice.findAllTrips());
     }
 
-    @Override
-    public void exit() {
-        sc.close();
-    }
 }

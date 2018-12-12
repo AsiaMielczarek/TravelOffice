@@ -19,7 +19,6 @@ public interface UserInterface {
 
     void showTrips();
 
-    void exit();
 }
 
 
