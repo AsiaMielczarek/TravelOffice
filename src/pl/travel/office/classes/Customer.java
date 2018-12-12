@@ -1,4 +1,4 @@
-package pl.traveloffice;
+package pl.travel.office.classes;
 
 public class Customer {
 

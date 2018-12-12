@@ -1,4 +1,4 @@
-package pl.traveloffice;
+package pl.travel.office.classes;
 
 import java.util.*;
 
@@ -7,24 +7,13 @@ public class TravelOffice {
     private Set<Customer> customers = new HashSet<>();
     private Map<String, Trip> tripMap = new HashMap<>();
 
+
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
 
     public int getCustomerCount() {
         return customers.size();
-    }
-
-    public void addTrip(String tripName, Trip trip) {
-        tripMap.put(tripName, trip);
-    }
-
-    public boolean removeTrip(String tripName) {
-        if (tripMap.containsKey(tripName)) {
-            tripMap.remove(tripName);
-            return true;
-        }
-        return false;
     }
 
     public Customer findCustomerByName(String customerName) {
@@ -47,14 +36,6 @@ public class TravelOffice {
         return false;
     }
 
-    public String findAllTrips(){
-        StringBuilder sb = new StringBuilder();
-        for(Map.Entry<String, Trip> mapEntry: tripMap.entrySet()){
-            sb.append(mapEntry.getKey()).append("\n");
-        }
-        return sb.toString();
-    }
-
     public String findAllCustomers() {
         Customer c = null;
         StringBuilder sb = new StringBuilder();
@@ -62,6 +43,36 @@ public class TravelOffice {
         while (iterator.hasNext()) {
             c = iterator.next();
             sb.append(c.getName()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public void addTrip(String tripId, Trip trip) {
+        tripMap.put(tripId, trip);
+    }
+
+    public boolean removeTrip(String tripId) {
+        if (tripMap.containsKey(tripId)) {
+            tripMap.remove(tripId);
+            return true;
+        }
+        return false;
+    }
+
+    public Trip findTripById(String id){
+        Trip trip = null;
+        for(Map.Entry<String, Trip> mapEntry: tripMap.entrySet()){
+            if(mapEntry.getKey().equals(id)){
+                trip = mapEntry.getValue();
+            }
+        }
+        return trip;
+    }
+
+    public String findAllTrips(){
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry<String, Trip> mapEntry: tripMap.entrySet()){
+            sb.append(mapEntry.getKey()).append(mapEntry.getValue()).append("\n");
         }
         return sb.toString();
     }
@@ -79,7 +90,7 @@ public class TravelOffice {
 }
 
 
-//    TABLICA DYNAMICZNA
+//    TABLICA DYNAMICZNA - 4.9
 
 //    private Customer[] customersTab = new Customer[2];
 //    private int customerCount = 0;
